@@ -1,0 +1,1 @@
+# ReactXShop seed project
