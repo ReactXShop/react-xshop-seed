@@ -1,7 +1,18 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from "@vitejs/plugin-react-swc";
+import { defineConfig } from "vite";
+import Checker from "vite-plugin-checker";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  plugins: [
+    react(),
+    Checker({
+      typescript: true,
+      // overlay: true,
+      // eslint: {
+      //   files: "./src",
+      //   extensions: [".ts", ".tsx"],
+      // },
+    }),
+  ],
+});
