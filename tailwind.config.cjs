@@ -19,7 +19,7 @@ module.exports = {
       ringColor: {
         DEFAULT: "gray",
       },
-      ringOffsetWidth:{
+      ringOffsetWidth: {
         DEFAULT: "2px",
       },
       outlineColor: {

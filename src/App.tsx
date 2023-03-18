@@ -1,7 +1,9 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import { router } from "./layout/Layout";
 
 function App() {
-  return <div className="text-xl text-red-800">React XShop</div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
