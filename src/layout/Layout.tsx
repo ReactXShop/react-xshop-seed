@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { Landing } from "../pages/Landing";
+import { Landing } from "../pages/landing/Landing";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <main className="flex-">
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />
