@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SearchBar } from "../components/SearchBar";
 
 export const Header = () => {
   return (
@@ -17,6 +18,11 @@ export const Header = () => {
               </Link>
             </li>
           </ul>
+          <div className="flex items-center justify-end space-x-4 md:w-2/12 xl:space-x-8">
+            <div className="hidden items-center lg:flex">
+              <SearchBar />
+            </div>
+          </div>
         </div>
       </div>
     </div>

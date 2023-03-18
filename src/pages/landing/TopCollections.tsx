@@ -11,7 +11,6 @@ export const TopCollections = () => {
           <h1 className="text-center text-3xl font-semibold text-gray-800 lg:text-3xl">Top Collections</h1>
         </div>
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
-          {" "}
           {collections.map((collection) => (
             <CollectionCard key={collection.id} collection={collection} />
           ))}
