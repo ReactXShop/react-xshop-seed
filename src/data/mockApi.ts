@@ -10,7 +10,7 @@ class MockApi {
     const tokensInCollection = this.getAllTokensByCollection(collectionId, null);
     return tokensInCollection.filter((token) => token.id === id)[0] || null;
   };
-  getAllTokensByCollection = (address: string, filter: any): Token[] => {
+  getAllTokensByCollection = (address: string, filter?: any): Token[] => {
     const token = tokens.filter((token) => token.contract_address === address)[0];
     const allTokens = converToTokensArray(token);
     let result = allTokens;
@@ -26,7 +26,7 @@ class MockApi {
     return result;
   };
 
-  getTokensByCollection = async (address: string, page = 0, filter: any): Promise<DataWithPagination<Token>> => {
+  getTokensByCollection = async (address: string, page = 0, filter?: any): Promise<DataWithPagination<Token>> => {
     await sleep(1000);
     const pageSize = 8;
 

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { mockApi } from "../../data/mockApi";
+import { Tokenlist } from "./Tokenlist";
 
 export const Collection = () => {
   const params = useParams<{ id: string }>();
@@ -37,7 +38,9 @@ export const Collection = () => {
             </div>
 
             {/* token list */}
-            <section></section>
+            <section>
+              <Tokenlist collectionId={collection.id} />
+            </section>
           </div>
         </div>
       </div>
