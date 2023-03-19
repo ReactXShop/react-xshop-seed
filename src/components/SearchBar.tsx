@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   id?: string;
 };
-
 export const SearchBar: React.FC<Props> = ({ id = "searchInput" }) => {
   const [searchInput, setSearchInput] = useState("");
 

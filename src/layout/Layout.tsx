@@ -1,10 +1,12 @@
+import { PropsWithChildren } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
+import { Collection } from "../pages/collection/Collection";
 import { Landing } from "../pages/landing/Landing";
 import { SearchResult } from "../pages/search/SearchResult";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
-export const Layout = () => {
+const Layout: React.FC<PropsWithChildren> = () => {
   return (
     <>
       <Header />
@@ -28,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/search/:query",
         element: <SearchResult />,
+      },
+      {
+        path: "/collection/:id",
+        element: <Collection />,
       },
     ],
   },

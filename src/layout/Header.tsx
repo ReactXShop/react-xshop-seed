@@ -3,7 +3,7 @@ import { SearchBar } from "../components/SearchBar";
 
 export const Header = () => {
   return (
-    <div className="sticky top-0 h-20 bg-indigo-400">
+    <div className="sticky top-0 z-50">
       <div className="bg-gray-50 px-6 py-6 shadow">
         <div className="container mx-auto flex items-center justify-start">
           <h1 className="text-2xl font-black text-gray-800 dark:text-black">
