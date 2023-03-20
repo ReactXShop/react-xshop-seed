@@ -38,7 +38,7 @@ export const Collection = () => {
             </div>
 
             {/* token list */}
-            <section>
+            <section className="mt-5 flex flex-row">
               <Tokenlist collectionId={collection.id} />
             </section>
           </div>
