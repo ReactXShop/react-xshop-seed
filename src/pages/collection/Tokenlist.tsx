@@ -46,7 +46,7 @@ export const Tokenlist: React.FC<Props> = ({ collectionId }) => {
 
         {/* load more */}
         <div className="mt-5 px-[20%] lg:px-[30%]">
-          {hasMoreData && (
+          {hasMoreData && tokens.length !== 0 && (
             <button
               disabled={isLoading}
               onClick={handleLoadMore}
