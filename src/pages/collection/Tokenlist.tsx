@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "../../components/Spinner";
+import { TokenCard } from "../../components/TokenCard";
 import { mockApi } from "../../data/mockApi";
 import { Token } from "../../types/types";
 
@@ -8,20 +10,27 @@ type Props = {
 
 export const Tokenlist: React.FC<Props> = ({ collectionId }) => {
   const [tokens, setTokens] = useState<Token[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // fetch the first page of tokens
-    mockApi.getTokensByCollection(collectionId).then((tokenList) => setTokens(tokenList.data));
+    setIsLoading(true);
+    mockApi.getTokensByCollection(collectionId).then((tokenList) => {
+      setIsLoading(false);
+      setTokens(tokenList.data);
+    });
   }, []);
 
   return (
-    <div>
-      {tokens.map((token) => (
-        <div key={token.id}>
-          <img src={token.cached_images.small_250_250} alt={token.name!} />
-          <p>{token.name}</p>
+    <>
+      {isLoading && <Spinner />}
+      <div className="w-full">
+        <div className={"grid w-full grid-cols-fluid-xs gap-5 sm:grid-cols-fluid"}>
+          {tokens.map((token) => (
+            <TokenCard token={token} key={token.id} />
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 };
