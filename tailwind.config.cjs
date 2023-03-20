@@ -2,11 +2,7 @@
 
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  // plugins: [require("daisyui")],
-  plugins: [
-    // require("daisyui"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/forms")],
   theme: {
     extend: {
       gridTemplateColumns: {
@@ -19,7 +15,7 @@ module.exports = {
       ringColor: {
         DEFAULT: "gray",
       },
-      ringOffsetWidth:{
+      ringOffsetWidth: {
         DEFAULT: "2px",
       },
       outlineColor: {
