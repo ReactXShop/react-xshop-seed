@@ -1,12 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  // plugins: [require("daisyui")],
-  plugins: [
-    // require("daisyui"),
-    require("@tailwindcss/forms"),
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "./index.html"],
+  plugins: [require("@tailwindcss/forms")],
   theme: {
     extend: {
       gridTemplateColumns: {
