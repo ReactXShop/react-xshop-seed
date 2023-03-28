@@ -3,6 +3,7 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import { Collection } from "../pages/collection/Collection";
 import { Landing } from "../pages/landing/Landing";
 import { SearchResult } from "../pages/search/SearchResult";
+import ShoppingCart from "../pages/shopping-cart/ShoppingCart";
 import { TokenDetails } from "../pages/token-details/TokenDetails";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -39,6 +40,14 @@ export const router = createBrowserRouter([
       {
         path: "/token/:collectionId/:id",
         element: <TokenDetails />,
+      },
+      {
+        path: "/token/:collectionId/:id",
+        element: <TokenDetails />,
+      },
+      {
+        path: "/shopping-cart",
+        element: <ShoppingCart />,
       },
     ],
   },
