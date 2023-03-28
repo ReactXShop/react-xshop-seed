@@ -1,10 +1,13 @@
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { ProfileMenu } from "../components/ProfileMenu";
 import { SearchBar } from "../components/SearchBar";
+import { useAuth } from "../context/AuthContext";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 export const Header = () => {
   const { cart } = useShoppingCart();
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <div className="sticky top-0 z-50">
@@ -44,6 +47,20 @@ export const Header = () => {
                 </strong>
               </button>
               {/* profile menu */}
+              <div className="hidden md:flex">
+                {isAuthenticated ? (
+                  <ProfileMenu />
+                ) : (
+                  <button
+                    aria-label="login or signup"
+                    className="rounded text-gray-800 outline-none focus:ring-2 focus:ring-offset-2 dark:text-gray-800 dark:hover:text-gray-500 "
+                  >
+                    <Link to="/login" tabIndex={-1} title="login">
+                      <UserIcon className="h-6 w-6" />
+                    </Link>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>

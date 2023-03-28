@@ -2,12 +2,14 @@ import { CheckBadgeIcon, QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/re
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Spinner } from "../../components/Spinner";
+import { useAuth } from "../../context/AuthContext";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 export default function ShoppingCart() {
   const { cart, total, addOrRemoveFromCart, clearCart } = useShoppingCart();
   const navigate = useNavigate();
   const [fakePaying, setFakePaying] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className="h-full bg-white">
@@ -138,25 +140,38 @@ export default function ShoppingCart() {
               </dl>
 
               <div className="mt-6">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
+                {isAuthenticated ? (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
 
-                    setFakePaying(true);
-                    setTimeout(() => {
-                      setFakePaying(false);
-                      clearCart();
-                      navigate("/order-complete");
-                    }, 2000);
+                      setFakePaying(true);
+                      setTimeout(() => {
+                        setFakePaying(false);
+                        clearCart();
+                        navigate("/order-complete");
+                      }, 2000);
 
-                    // TODO: payment is not implemented yet
-                    // navigate("/checkout");
-                  }}
-                  className=" flex w-full items-center justify-center rounded-xl border-2 bg-gray-900 p-2 px-3 text-xl font-medium text-white hover:bg-gray-600"
-                >
-                  <CheckBadgeIcon className="mr-3 h-6 w-6" />
-                  <p>Checkout</p>
-                </button>
+                      // TODO: payment is not implemented yet
+                      // navigate("/checkout");
+                    }}
+                    className=" flex w-full items-center justify-center rounded-xl border-2 bg-gray-900 p-2 px-3 text-xl font-medium text-white hover:bg-gray-600"
+                  >
+                    <CheckBadgeIcon className="mr-3 h-6 w-6" />
+                    <p>Checkout</p>
+                  </button>
+                ) : (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/login", { state: { from: "/shopping-cart" } });
+                    }}
+                    className=" flex w-full items-center justify-center rounded-xl border-2 bg-gray-900 p-2 px-3 text-xl font-medium text-white hover:bg-gray-600"
+                  >
+                    <CheckBadgeIcon className="mr-3 h-6 w-6" />
+                    <p>Login to checkout</p>
+                  </button>
+                )}
               </div>
               {fakePaying && <Spinner />}
             </section>
