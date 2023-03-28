@@ -32,16 +32,16 @@ export const Header = () => {
                 aria-label="go to cart"
                 className="rounded text-gray-800 outline-none  focus:ring-2 dark:text-gray-800 dark:hover:text-gray-500"
               >
-                {/* <strong className="relative inline-flex items-center rounded  border-gray-200 px-2.5 py-1.5 text-xs font-medium">
+                <strong className="relative inline-flex items-center rounded  border-gray-200 px-2.5 py-1.5 text-xs font-medium">
                   {cart.length > 0 && (
                     <span className="items absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-gray-600 text-white">
                       <span>{cart.length}</span>
                     </span>
-                  )} */}
-                <Link tabIndex={-1} to={`shopping-cart`} title="cart">
-                  <ShoppingBagIcon className="h-6 w-6" />
-                </Link>
-                {/* </strong> */}
+                  )}
+                  <Link tabIndex={-1} to={`shopping-cart`} title="cart">
+                    <ShoppingBagIcon className="h-6 w-6" />
+                  </Link>
+                </strong>
               </button>
               {/* profile menu */}
             </div>
