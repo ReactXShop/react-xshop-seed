@@ -3,10 +3,12 @@ import { CheckBadgeIcon, HeartIcon, ShoppingBagIcon } from "@heroicons/react/24/
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ImageWithLoader } from "../../components/ImageWithLoader";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { mockApi } from "../../data/mockApi";
 import { Token } from "../../types/types";
 
 export const TokenDetails = () => {
+  const { addOrRemoveFromCart, isInCart } = useShoppingCart();
   const navigate = useNavigate();
   const { collectionId, id } = useParams();
   const [token, setToken] = useState<Token | null>(null);
@@ -49,14 +51,25 @@ export const TokenDetails = () => {
           </div>
 
           <div className="flex-row gap-6 lg:flex">
-            <button className="flex w-full items-center justify-center rounded-xl border-2 p-2 px-3 text-xl font-medium text-gray-600 hover:bg-gray-100">
+            <button
+              onClick={() => {
+                if (!isInCart(token)) {
+                  addOrRemoveFromCart(token);
+                }
+                navigate("/shopping-cart");
+              }}
+              className="flex w-full items-center justify-center rounded-xl border-2 p-2 px-3 text-xl font-medium text-gray-600 hover:bg-gray-100"
+            >
               <CheckBadgeIcon className="mr-3 h-6 w-6" />
               <p>Buy now</p>
             </button>
 
-            <button className="mt-3 flex w-full items-center justify-center rounded-xl border-2 p-2 px-3 text-xl font-medium text-gray-600 hover:bg-gray-100 lg:mt-0">
+            <button
+              onClick={() => addOrRemoveFromCart(token)}
+              className="mt-3 flex w-full items-center justify-center rounded-xl border-2 p-2 px-3 text-xl font-medium text-gray-600 hover:bg-gray-100 lg:mt-0"
+            >
               <ShoppingBagIcon className="mr-3 h-6 w-6" />
-              <p>{`${false ? "Remove from" : "Add to"} cart`}</p>
+              <p>{`${isInCart(token) ? "Remove from" : "Add to"} cart`}</p>
             </button>
 
             <div>
