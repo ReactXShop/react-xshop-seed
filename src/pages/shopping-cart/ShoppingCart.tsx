@@ -70,6 +70,7 @@ export default function ShoppingCart() {
                             <option value={5}>5</option>
                           </select>
 
+                          {/* delete button */}
                           <div className="absolute top-0 right-0">
                             <button
                               type="button"
@@ -109,7 +110,7 @@ export default function ShoppingCart() {
               <dl className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-600">Subtotal</dt>
-                  <dd className="text-sm font-medium text-gray-900">$0.00</dd>
+                  <dd className="text-sm font-medium text-gray-900">{`$${total}`}</dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex items-center text-sm text-gray-600">

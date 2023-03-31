@@ -3,8 +3,6 @@ import { Token } from "../types/types";
 
 type ShoppingCartContextType = {
   cart: Token[];
-  addToCart: (token: Token) => void;
-  removeFromCart: (token: Token) => void;
   total: number;
   addOrRemoveFromCart: (token: Token) => void;
   isInCart: (token: Token) => boolean;
@@ -58,7 +56,8 @@ export const ShoppingCartProvider = (props: any) => {
     calculateTotal();
   }, [cart.length]);
 
-  const value = { cart, addToCart, removeFromCart, addOrRemoveFromCart, isInCart, total, clearCart };
+  // this can be optimized by using useMemo, if performance is an issue
+  const value = { cart, addOrRemoveFromCart, isInCart, total, clearCart };
 
   return <ShoppingCartContext.Provider value={value} {...props} />;
 };
